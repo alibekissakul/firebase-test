@@ -7,7 +7,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var messaging = firebase.messaging();
-messaging.usingPublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6mJZjQZ_79Z3E26lwGzdyfOeZZP37ICZiyvas');
+messaging.usePublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6mJZjQZ_79Z3E26lwGzdyfOeZZP37ICZiyvas');
 
 Notification.requestPermission().then(function(permission) {
   if (permission === 'granted') {
