@@ -20,6 +20,7 @@ navigator.serviceWorker.register('firebase-messaging-sw.js')
       
       messaging.getToken().then(function(currentToken) {
         if (currentToken) {
+          console.log('token', currentToken);
           // sendTokenToServer(currentToken);
           // updateUIForPushEnabled(currentToken);
         } else {
@@ -42,7 +43,7 @@ navigator.serviceWorker.register('firebase-messaging-sw.js')
 
 messaging.onTokenRefresh(function() {
   messaging.getToken().then(function(refreshedToken) {
-    console.log('Token refreshed.');
+    console.log('Token refreshed.', refreshedToken);
     // Indicate that the new Instance ID token has not yet been sent to the
     // app server.
     // setTokenSentToServer(false);
