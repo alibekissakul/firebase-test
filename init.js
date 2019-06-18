@@ -20,19 +20,19 @@ navigator.serviceWorker.register('firebase-messaging-sw.js')
       
       messaging.getToken().then(function(currentToken) {
         if (currentToken) {
-          sendTokenToServer(currentToken);
-          updateUIForPushEnabled(currentToken);
+          // sendTokenToServer(currentToken);
+          // updateUIForPushEnabled(currentToken);
         } else {
           // Show permission request.
           console.log('No Instance ID token available. Request permission to generate one.');
           // Show permission UI.
-          updateUIForPushPermissionRequired();
-          setTokenSentToServer(false);
+          // updateUIForPushPermissionRequired();
+          // setTokenSentToServer(false);
         }
       }).catch(function(err) {
         console.log('An error occurred while retrieving token. ', err);
-        showToken('Error retrieving Instance ID token. ', err);
-        setTokenSentToServer(false);
+        // showToken('Error retrieving Instance ID token. ', err);
+        // setTokenSentToServer(false);
       });
     } else {
       console.log('Unable to get permission to notify.');
@@ -45,13 +45,13 @@ messaging.onTokenRefresh(function() {
     console.log('Token refreshed.');
     // Indicate that the new Instance ID token has not yet been sent to the
     // app server.
-    setTokenSentToServer(false);
+    // setTokenSentToServer(false);
     // Send Instance ID token to app server.
-    sendTokenToServer(refreshedToken);
+    // sendTokenToServer(refreshedToken);
     // ...
   }).catch(function(err) {
     console.log('Unable to retrieve refreshed token ', err);
-    showToken('Unable to retrieve refreshed token ', err);
+    // showToken('Unable to retrieve refreshed token ', err);
   });
 });
 
