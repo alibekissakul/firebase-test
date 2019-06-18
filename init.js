@@ -1,7 +1,11 @@
-var firebaseConfig = {
-  projectId: 'zhambyltipo-kz',
-  messagingSenderId: '209735873429',
-  appId: '1:209735873429:web:48fa2ecd9689ee1b'
+const firebaseConfig = {
+  apiKey: "AIzaSyChBVtUghFCvRaq9V9_m6B2mdQpTbZ32TM",
+  authDomain: "zhambyltipo-kz.firebaseapp.com",
+  databaseURL: "https://zhambyltipo-kz.firebaseio.com",
+  projectId: "zhambyltipo-kz",
+  storageBucket: "zhambyltipo-kz.appspot.com",
+  messagingSenderId: "209735873429",
+  appId: "1:209735873429:web:48fa2ecd9689ee1b"
 };
 
 firebase.initializeApp(firebaseConfig);
