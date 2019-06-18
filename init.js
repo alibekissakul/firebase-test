@@ -10,10 +10,11 @@ var messaging = firebase.messaging();
 
 messaging.usePublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6mJZjQZ_79Z3E26lwGzdyfOeZZP37ICZiyvas');
 
-navigator.serviceWorker.register('firebase-messaging-sw.js')
+navigator.serviceWorker
+.register('firebase-messaging-sw.js')
 .then(function(registration) {
   console.log('serviceWorker', registration);
-  
+
   messaging.useServiceWorker(registration);
 
   // Request permission and get token.....
@@ -41,6 +42,8 @@ navigator.serviceWorker.register('firebase-messaging-sw.js')
     } else {
       console.log('Unable to get permission to notify.');
     }
+  }).catch(function(err) {
+    console.log('serviceWorker error.', err);
   });
 });
 
