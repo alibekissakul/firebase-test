@@ -1,16 +1,13 @@
 var firebaseConfig = {
-  projectId: 'zhambyltipo-kz',
-  messagingSenderId: '209735873429',
-  appId: '1:209735873429:web:48fa2ecd9689ee1b'
+  messagingSenderId: '209735873429'
 };
 
 firebase.initializeApp(firebaseConfig);
 
 var messaging = firebase.messaging();
-messaging.usePublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6mJZjQZ_79Z3E26lwGzdyfOeZZP37ICZiyvas');
 
 navigator.serviceWorker.register('firebase-messaging-sw.js')
-.then((registration) => {
+.then(function(registration) {
   messaging.useServiceWorker(registration);
 
   // Request permission and get token.....
