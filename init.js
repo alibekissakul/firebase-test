@@ -34,6 +34,13 @@ Notification.requestPermission().then(function(permission) {
   }
 });
 
+// navigator.serviceWorker.register('/firebase-messaging-sw.js')
+// .then((registration) => {
+//   messaging.useServiceWorker(registration);
+
+//   // Request permission and get token.....
+// });
+
 messaging.onTokenRefresh(function() {
   messaging.getToken().then(function(refreshedToken) {
     console.log('Token refreshed.');
