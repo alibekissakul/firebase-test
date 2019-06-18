@@ -12,6 +12,8 @@ messaging.usePublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6
 
 navigator.serviceWorker.register('firebase-messaging-sw.js')
 .then(function(registration) {
+  console.log('serviceWorker', registration);
+  
   messaging.useServiceWorker(registration);
 
   // Request permission and get token.....
