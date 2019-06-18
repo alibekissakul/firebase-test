@@ -1,5 +1,7 @@
 var firebaseConfig = {
-  messagingSenderId: '209735873429'
+  projectId: 'zhambyltipo-kz',
+  messagingSenderId: '209735873429',
+  appId: '1:209735873429:web:48fa2ecd9689ee1b'
 };
 
 firebase.initializeApp(firebaseConfig);
