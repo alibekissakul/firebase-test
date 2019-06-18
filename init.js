@@ -4,7 +4,7 @@ var firebaseConfig = {
   appId: '1:209735873429:web:48fa2ecd9689ee1b'
 };
 
-fireabase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 var messaging = firebase.messaging();
 messaging.usingPublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6mJZjQZ_79Z3E26lwGzdyfOeZZP37ICZiyvas');
