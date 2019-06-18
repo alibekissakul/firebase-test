@@ -9,37 +9,36 @@ firebase.initializeApp(firebaseConfig);
 var messaging = firebase.messaging();
 messaging.usePublicVapidKey('BBbQ8B9U0pCqF_5sL0C9OAHkMXUP0JKmEQhjRq5qgatBNPOhuz6mJZjQZ_79Z3E26lwGzdyfOeZZP37ICZiyvas');
 
-Notification.requestPermission().then(function(permission) {
-  if (permission === 'granted') {
-    console.log('Notification permission granted.');
-    
-    messaging.getToken().then(function(currentToken) {
-      if (currentToken) {
-        sendTokenToServer(currentToken);
-        updateUIForPushEnabled(currentToken);
-      } else {
-        // Show permission request.
-        console.log('No Instance ID token available. Request permission to generate one.');
-        // Show permission UI.
-        updateUIForPushPermissionRequired();
+navigator.serviceWorker.register('firebase-messaging-sw.js')
+.then((registration) => {
+  messaging.useServiceWorker(registration);
+
+  // Request permission and get token.....
+  Notification.requestPermission().then(function(permission) {
+    if (permission === 'granted') {
+      console.log('Notification permission granted.');
+      
+      messaging.getToken().then(function(currentToken) {
+        if (currentToken) {
+          sendTokenToServer(currentToken);
+          updateUIForPushEnabled(currentToken);
+        } else {
+          // Show permission request.
+          console.log('No Instance ID token available. Request permission to generate one.');
+          // Show permission UI.
+          updateUIForPushPermissionRequired();
+          setTokenSentToServer(false);
+        }
+      }).catch(function(err) {
+        console.log('An error occurred while retrieving token. ', err);
+        showToken('Error retrieving Instance ID token. ', err);
         setTokenSentToServer(false);
-      }
-    }).catch(function(err) {
-      console.log('An error occurred while retrieving token. ', err);
-      showToken('Error retrieving Instance ID token. ', err);
-      setTokenSentToServer(false);
-    });
-  } else {
-    console.log('Unable to get permission to notify.');
-  }
+      });
+    } else {
+      console.log('Unable to get permission to notify.');
+    }
+  });
 });
-
-// navigator.serviceWorker.register('/firebase-messaging-sw.js')
-// .then((registration) => {
-//   messaging.useServiceWorker(registration);
-
-//   // Request permission and get token.....
-// });
 
 messaging.onTokenRefresh(function() {
   messaging.getToken().then(function(refreshedToken) {
